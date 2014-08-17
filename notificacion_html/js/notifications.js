@@ -75,7 +75,7 @@ var Notifications = function (newSettings) {
   var removeNotification = function (div) {
     setTimeout(function(){
          area.removeChild(div);
-    }, 3000);
+    }, settings.time);
   }
 
   return{
