@@ -40,7 +40,7 @@ angular.module('ngNotifications', [])
       area.innerHTML = template;
       area.className = settings.position;
       document.getElementsByClassName('close-notification')[0].addEventListener("click", function(){
-        this.parentNode.parentNode.removeChild(this.parentNode);
+        this.parentNode.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode.parentNode)
       });
       if(settings.removable){
         removeNotification(el);

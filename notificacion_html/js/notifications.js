@@ -25,7 +25,6 @@ var Notifications = function (newSettings) {
     set(newSettings);
     var el = document.createElement('div'),
         template = "<a class='notification " + settings.animation + " " + settings.backgroundColor + " " + settings.color + "'";
-    el.innerHTML = template;
     if(settings.canUrl){
       template = template + " href='" + settings.url + ">'";
     }else{
@@ -36,12 +35,12 @@ var Notifications = function (newSettings) {
     }else{
       template = template + "<div>";
     }
-
     template = template + "<div class='title-notification'>" + author + "</div><div>" + msg + "</div><aside class='close-notification'>X</aside></div></a>";
-    area.innerHTML = template;
+    el.innerHTML = template;
+    area.appendChild(el);
     area.className = settings.position;
     document.getElementsByClassName('close-notification')[0].addEventListener("click", function(){
-      this.parentNode.parentNode.removeChild(this.parentNode);
+      this.parentNode.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode.parentNode)
     });
     if(settings.removable){
       removeNotification(el);
@@ -51,7 +50,7 @@ var Notifications = function (newSettings) {
 
   var removeNotification = function (div) {
     setTimeout(function(){
-         area.removeChild(div);
+      area.removeChild(div);
     }, settings.time);
   };
 
