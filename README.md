@@ -33,8 +33,8 @@ app.controller("IndexController", function($scope, $notification){
 ```
 settings = {
         position:"top-right" //posicion absoluta pantalla, valores: "top-right", "top-left", "bottom-left", "bottom-right"
-        backgroundColor : "#333", // color del fondo de la notificacion
-        color: "#fff", //color del texto y de la X de cerrar la notificación
+        backgroundColor : "bg-color", // color del fondo : bg-black, bg-white
+        color: "color", //color del texto y de la X: black, white
         animation: "slide-in-right", //animaciones disponibles "slide-in-right", "slide-in-left", "scale"
         image: false, // agregar imagen
         removable: true, // Notificacion se borra a los X segundos, si quieres mantener la notificación value false

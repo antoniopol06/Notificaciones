@@ -2,8 +2,8 @@ angular.module('ngNotifications', [])
   .factory('$notification', function() {
     var settings = {
         position: "top-right",
-        backgroundColor : "#333",
-        color: "#fff",
+        backgroundColor : "bg-black",
+        color: "white",
         animation: "slide-in-right",
         image: false,
         removable: true,
@@ -12,55 +12,38 @@ angular.module('ngNotifications', [])
         canUrl: false,
         url: "http://www.google.com",
       },
-      notification,
       area = document.getElementById("notifications");
     var set = function(newSettings){
       for (var property in newSettings){
-        settings[property] = newSettings[property];
+        if (hasOwnProperty.call(newSettings, property)) {
+          settings[property] = newSettings[property];
+        }
       }
     };
 
     var create = function (author, msg) {
-      var frag = document.createDocumentFragment(),
-          div = document.createElement('a'),
-          divBox = document.createElement('div'),
-          authorBox = document.createElement('div'),
-          authorText = document.createTextNode(author),
-          msgBox = document.createElement('div'),
-          msgText = document.createTextNode(msg),
-          close = document.createElement('aside'),
-          textClose = document.createTextNode('X');
-      close.className = "close-notification";
-      close.style.color = settings.color; 
-      close.appendChild(textClose);
-      area.className = settings.position;
-      div.className = "notification " + " " + settings.animation;
-      if(settings.image){
-        var img = document.createElement('img');
-        img.src = settings.srcImage;
-        img.className = "img-notification";
-        divBox.className ="inline-block";
-        div.appendChild(img);
+      var el = document.createElement('div'),
+        template = "<a class='notification " + settings.animation + " " + settings.backgroundColor + " " + settings.color + "'";
+      el.innerHTML = template;
+      if(settings.canUrl){
+        template = template + " href='" + settings.url + ">'";
+      }else{
+        template = template + ">";
       }
-      authorBox.appendChild(authorText);
-      authorBox.className = "title-notification";
-      msgBox.appendChild(msgText);
-      divBox.appendChild(authorBox);
-      divBox.appendChild(msgBox);
-      div.appendChild(divBox);
-      div.appendChild(close);
-      frag.appendChild(div);
-      area.appendChild(frag);
-      div.style.backgroundColor = settings.backgroundColor;
-      div.style.color = settings.color;
-      close.addEventListener("click", function(){
+      if(settings.image){
+        template = template + "<img class='img-notification' src='" + settings.srcImage + "'/><div class='inline-block'>";
+      }else{
+        template = template + "<div>";
+      }
+
+      template = template + "<div class='title-notification'>" + author + "</div><div>" + msg + "</div><aside class='close-notification'>X</aside></div></a>";
+      area.innerHTML = template;
+      area.className = settings.position;
+      document.getElementsByClassName('close-notification')[0].addEventListener("click", function(){
         this.parentNode.parentNode.removeChild(this.parentNode);
       });
       if(settings.removable){
-        removeNotification(div);
-      }
-      if(settings.canUrl){
-        div.href = settings.url;
+        removeNotification(el);
       }
     };
 
@@ -73,5 +56,5 @@ angular.module('ngNotifications', [])
     return{
       create: create,
       set: set
-    }
+    };
   });

@@ -12,7 +12,7 @@
     </aside>
     <script src="js/notifications.js"></script>
     <script>
-      var n = Notifications();
+      var n = Notifications({position: "top-left",image:true, animation: "slide-in-left", backgroundColor: "bg-black", color: "white", removable: false});
       n.createNotification("Antonio", "Hola");
     </script>
   </body>

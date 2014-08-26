@@ -63,6 +63,24 @@
   cursor: pointer;
 }
 
+/*COLORS*/
+.white{
+  color:#fff;
+}
+
+.black{
+  color: #000;
+}
+
+.bg-white{
+  background-color: #fff;
+}
+
+.bg-black{
+  background-color: #000;
+}
+/*end colors*/
+
 /*SLIDE IN*/
 .slide-in-right{
 	-webkit-animation: slideInRight 1s;
