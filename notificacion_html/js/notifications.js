@@ -50,7 +50,7 @@ var Notifications = function (newSettings) {
 
   var removeNotification = function (div) {
     setTimeout(function(){
-      area.removeChild(div);
+      area.innerHTML = '';
     }, settings.time);
   };
 

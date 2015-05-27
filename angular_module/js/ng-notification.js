@@ -49,7 +49,7 @@ angular.module('ngNotifications', [])
 
     var removeNotification = function (div) {
       setTimeout(function(){
-           area.removeChild(div);
+           area.innerHTML = '';
       }, settings.time);
     };
 
