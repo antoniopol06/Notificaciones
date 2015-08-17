@@ -8,7 +8,7 @@
 ```
 * JS
 ```
-var n = Notifications({canUrl: true, url: "http://www.twitter.com/antoniopol06"}); // ejemplo de setear algunas opciones
+var n = Notifications({canUrl: true, url: "http://www.twitter.com/antoniopol06"}); /Set your custom settings (view the settings section)
 n.createNotification(title, text);
 ```
 
@@ -36,7 +36,7 @@ n.createNotification(title, text);
 var app = angular.module("app", ["angularNotifications"]);
 
 app.controller("IndexController", function($scope, $notification){
-  $notification.set({image: true, removable: false});//ejemplo de setear algunas opciones
+  $notification.set({image: true, removable: false});//Set your custom settings (view the settings section)
   $notification.create("hola", "Esto es una prueba");
 });
 
