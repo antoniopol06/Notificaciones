@@ -26,10 +26,10 @@ angular.module('angularNotifications', [])
         template = "<a class='notification " + settings.animation + " " + settings.backgroundColor + " " + settings.color + "'";
       el.innerHTML = template;
       if(settings.canUrl){
-        template = template + " href='" + settings.url + ">'";
-      }else{
-        template = template + ">";
+        template = template + " href='" + settings.url + "'";
       }
+      template = template + ">";
+
       if(settings.image){
         template = template + "<img class='img-notification' src='" + settings.srcImage + "'/><div class='inline-block'>";
       }else{
