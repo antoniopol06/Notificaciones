@@ -1,4 +1,4 @@
-angular.module('ngNotifications', [])
+angular.module('angularNotifications', [])
   .factory('$notification', function() {
     var settings = {
         position: "top-right",

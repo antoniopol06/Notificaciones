@@ -1,4 +1,4 @@
-var app = angular.module("app", ["ngNotifications"]);
+var app = angular.module("app", ["angularNotifications"]);
 
 app.controller("IndexController", function($scope, $notification){
   $notification.set({image: true, removable: true, animation: "scale"});
