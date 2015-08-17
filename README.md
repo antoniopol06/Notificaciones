@@ -14,6 +14,8 @@ n.createNotification(title, text);
 
 ###Notifications in AngularJS
 
+[DEMO LIVE](http://www.antoniopol.com/notifications-angular)
+
 ```
  bower install notifications-angular
 ```
